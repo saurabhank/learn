@@ -29,7 +29,7 @@ spec:
         #  persistentVolumeClaim:
         #    claimName: task-pv-claim
         # This AWS EBS volume must already exist.
-        -name: task-pv-storage
+        - name: task-pv-storage
           awsElasticBlockStore:
-          volumeID: "vol-0444d12425f070dfe"
-          fsType: ext4
+            volumeID: "vol-0444d12425f070dfe"
+            fsType: ext4
