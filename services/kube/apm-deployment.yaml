@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apm-deployment
+  labels:
+    app: apm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apm
+  
+
+  template:
+    metadata:
+      labels:
+        app: apm
+    spec:
+      containers:
+      - name: apm
+        image: makeyourcloth/apm:latest
+        ports:
+        - containerPort: 8200

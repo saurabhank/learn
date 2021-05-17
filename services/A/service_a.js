@@ -8,7 +8,7 @@ var fs = require('fs');
 const PORT = 3001;
 const HOST = '0.0.0.0';
 
-/*
+
 const apm = require('elastic-apm-node').start({
   // Override service name from package.json
   // Allowed characters: a-z, A-Z, 0-9, -, _, and space
@@ -21,10 +21,9 @@ const apm = require('elastic-apm-node').start({
   apiKey: '',
 
   // Set custom APM Server URL (default: http://localhost:8200)
-  serverUrl: 'http://localhost:8200',
+  serverUrl: 'http://apm:8200',
 })
 
-*/
 count = 0
 // App
 const app = express();
