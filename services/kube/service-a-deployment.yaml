@@ -31,5 +31,5 @@ spec:
         # This AWS EBS volume must already exist.
         - name: task-pv-storage
           awsElasticBlockStore:
-            volumeID: "vol-0444d12425f070dfe"
+            volumeID: "vol-0ceccfa3bbcfd5884"
             fsType: ext4
