@@ -33,13 +33,13 @@ spec:
         volumeMounts:
           - mountPath: "/data/db"
             name: mongo-storage
-        volumes:
-          #- name: task-pv-storage
-          #  persistentVolumeClaim:
-          #  claimName: task-pv-claim
-          # This AWS EBS volume must already exist.
-          - name: mongo-storage
-            awsElasticBlockStore:
-              volumeID: "vol-0084d6763c3d42296"
-              fsType: ext4
+      volumes:
+        #- name: task-pv-storage
+        #  persistentVolumeClaim:
+        #  claimName: task-pv-claim
+        # This AWS EBS volume must already exist.
+        - name: mongo-storage
+          awsElasticBlockStore:
+            volumeID: "vol-0084d6763c3d42296"
+            fsType: ext4
 
