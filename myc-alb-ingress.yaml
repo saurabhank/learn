@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: myc-alb-ingress
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/certificate-arn: AWS_CERTIFICATE_ARN
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+    alb.ingress.kubernetes.io/scheme: internet-facing
+  labels:
+    app: myc-alb-ingress
+spec:
+  rules:
+  - host: "makeyourcloth.com"
+    http:
+      paths:
+       - path: /*
+         backend:
+           serviceName: ssl-redirect
+           servicePort: use-annotation
+       - path: /*
+         backend:
+           serviceName: gateway-service
+           servicePort: 80
