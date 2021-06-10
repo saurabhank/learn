@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: elasticsearch
+  name: elasticsearch
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: elasticsearch
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/apm_elastic: "true"
+        io.kompose.service: elasticsearch
+    spec:
+      containers:
+        - env:
+            - name: ES_JAVA_OPTS
+              value: -XX:UseAVX=2 -Xms1g -Xmx1g
+            - name: bootstrap.memory_lock
+              value: "true"
+            - name: cluster.name
+              value: docker-cluster
+            - name: cluster.routing.allocation.disk.threshold_enabled
+              value: "false"
+            - name: discovery.type
+              value: single-node
+          image: docker.elastic.co/elasticsearch/elasticsearch:7.13.1
+          name: elasticsearch
+          ports:
+            - containerPort: 9200
+          resources: {}
+          volumeMounts:
+            - mountPath: /usr/share/elasticsearch/data
+              name: apm-esdata
+      restartPolicy: Always
+      volumes:
+        - name: apm-esdata
+          persistentVolumeClaim:
+            claimName: apm-esdata
+status: {}
