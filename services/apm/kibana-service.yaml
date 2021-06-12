@@ -9,10 +9,12 @@ metadata:
     io.kompose.service: kibana
   name: kibana
 spec:
+  type: LoadBalancer
   ports:
     - name: "5601"
       port: 5601
       targetPort: 5601
+      nodePort: 30056
   selector:
     io.kompose.service: kibana
 status:

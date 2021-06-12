@@ -21,7 +21,6 @@ spec:
         kompose.version: 1.22.0 (955b78124)
       creationTimestamp: null
       labels:
-        io.kompose.network/apm_elastic: "true"
         io.kompose.service: apm-server
     spec:
       containers:

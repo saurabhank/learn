@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: filebeat-deployment
+  labels:
+    app: filebeat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: filebeat
+  
+
+  template:
+    metadata:
+      labels:
+        app: filebeat
+    spec:
+      containers:
+      - name: filebeat
+        image: makeyourcloth/filebeat:latest
+        ports:
+        - containerPort: 3001
+        volumeMounts:
+          - mountPath: "/log/"
+            name: apm-pv
+      volumes:
+        - name: apm-pv
+          persistentVolumeClaim:
+            claimName: apm-pv-claim
+        # This AWS EBS volume must already exist.
+        #- name: task-pv-storage
+        #  awsElasticBlockStore:
+        #    volumeID: "vol-0ceccfa3bbcfd5884"
+        #    fsType: ext4

@@ -9,10 +9,12 @@ metadata:
     io.kompose.service: apm-server
   name: apm-server
 spec:
+  type: LoadBalancer
   ports:
     - name: "8200"
       port: 8200
       targetPort: 8200
+      nodePort: 30082
   selector:
     io.kompose.service: apm-server
 status:
