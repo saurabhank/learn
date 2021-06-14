@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 3001
 
-CMD [ "node", "service_a.js" ]
+CMD node service_a.js > /tmp/apm_log.log

@@ -9,8 +9,6 @@ spec:
   selector:
     matchLabels:
       app: filebeat
-  
-
   template:
     metadata:
       labels:
@@ -19,10 +17,8 @@ spec:
       containers:
       - name: filebeat
         image: makeyourcloth/filebeat:latest
-        ports:
-        - containerPort: 3001
         volumeMounts:
-          - mountPath: "/log/"
+          - mountPath: "/tmp/"
             name: apm-pv
       volumes:
         - name: apm-pv

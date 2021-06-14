@@ -22,14 +22,14 @@ spec:
         ports:
         - containerPort: 3001
         volumeMounts:
-          - mountPath: "/usr/share/"
-            name: task-pv-storage
+          - mountPath: "/tmp/"
+            name: apm-pv-volume
       volumes:
-        #- name: task-pv-storage
-        #  persistentVolumeClaim:
-        #    claimName: task-pv-claim
+        - name: apm-pv-volume
+          persistentVolumeClaim:
+            claimName: apm-pv-claim
         # This AWS EBS volume must already exist.
-        - name: task-pv-storage
-          awsElasticBlockStore:
-            volumeID: "vol-0ceccfa3bbcfd5884"
-            fsType: ext4
+        #- name: task-pv-storage
+        #  awsElasticBlockStore:
+        #    volumeID: "vol-0ceccfa3bbcfd5884"
+        #    fsType: ext4

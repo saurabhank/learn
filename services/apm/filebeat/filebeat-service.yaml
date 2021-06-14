@@ -5,9 +5,4 @@ metadata:
 spec:
   selector:
     app: filebeat
-  type: LoadBalancer
-  ports:
-    - protocol: TCP
-      port: 8200
-      targetPort: 8200
-      nodePort: 30082
+  type: LoadBalance

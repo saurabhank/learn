@@ -26,7 +26,7 @@ const apm = require('elastic-apm-node').start({
   apiKey: '',
 
   // Set custom APM Server URL (default: http://localhost:8200)
-  serverUrl: 'http://localhost:8200',
+  serverUrl: 'http://apm-server:8200',
   logLevel: 'trace'
 })
 
