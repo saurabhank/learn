@@ -1,0 +1,22 @@
+{
+  "name": "service-a",
+  "version": "1.0.0",
+  "description": "test for kubernetes sercvice a",
+  "main": "service_a.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "testing",
+    "kubernetes"
+  ],
+  "author": "lalla",
+  "license": "ISC",
+  "dependencies": {
+    "@elastic/ecs-pino-format": "^1.1.2",
+    "axios": "^0.21.1",
+    "elastic-apm-node": "^3.13.0",
+    "express": "^4.17.1",
+    "pino": "^6.11.3"
+  }
+}
